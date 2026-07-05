@@ -1,7 +1,35 @@
-docker build -t road-data-collection .
-docker tag road-data-collection:latest 465600481266.dkr.ecr.us-east-2.amazonaws.com/road-data-collection:latest
-docker push 465600481266.dkr.ecr.us-east-2.amazonaws.com/road-data-collection:latest
+# Vision-Language Models for Urban Digital Twins
 
+This repository contains a prototype system for enriching urban digital twins using mobile crowdsensing, object-detection metadata, geospatial coordinates, and vision-language model interpretation.
 
+## Overview
 
-docker run --rm -p 8000:8000 -e AWS_REGION=us-east-2   -e S3_BUCKET=lyft-data-collection   road-data-collection
+The system captures street-level images with GPS metadata, processes them using object-detection outputs and a vision-language model, and visualizes the resulting semantic observations in an interactive geospatial dashboard.
+
+## Main Components
+
+- Mobile sensing data: images, GPS, timestamp, and detection metadata
+- Vision-language interpretation: semantic enrichment of urban scenes
+- Geospatial structuring: GeoJSON-based observation records
+- Front-end visualization: Mapbox GL JS dashboard
+- Digital twin integration: spatially referenced semantic urban observations
+
+## Methodology
+
+1. Data acquisition from mobile sensors
+2. Object-detection metadata extraction
+3. Vision-language model interpretation
+4. Spatial structuring and storage
+5. Interactive digital twin visualization
+
+## Technologies
+
+- Python
+- OpenAI Responses API
+- Mapbox GL JS
+- GeoJSON
+- HTML, CSS, JavaScript
+
+## Notes
+
+API keys are not included in this repository. Create a `.env` file based on `.env.example`.
