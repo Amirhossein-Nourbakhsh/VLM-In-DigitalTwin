@@ -1,0 +1,7 @@
+docker build -t road-data-collection .
+docker tag road-data-collection:latest 465600481266.dkr.ecr.us-east-2.amazonaws.com/road-data-collection:latest
+docker push 465600481266.dkr.ecr.us-east-2.amazonaws.com/road-data-collection:latest
+
+
+
+docker run --rm -p 8000:8000 -e AWS_REGION=us-east-2   -e S3_BUCKET=lyft-data-collection   road-data-collection

@@ -1,0 +1,106 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:45:46+00:00",
+  "lat": 43.6307096,
+  "lon": -79.4844509,
+  "acc_m": 9.9350004196167,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "traffic light",
+      "confidence": 0.66796875,
+      "bbox": [
+        56.0,
+        240.0,
+        70.0,
+        280.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.66796875,
+      "bbox": [
+        214.0,
+        326.0,
+        273.0,
+        368.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.66796875,
+      "bbox": [
+        343.0,
+        327.0,
+        420.0,
+        375.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/4b620061-1d47-49db-bc2e-e01ac0aa4921.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4844509,
+        43.6307096
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:45:46+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/4b620061-1d47-49db-bc2e-e01ac0aa4921.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "A multi-lane urban street intersection is shown with several vehicles waiting ahead and distant high-rise buildings in the background.",
+    "interpretation": "The scene appears to be a city arterial or downtown approach road at an intersection, viewed from inside a vehicle, likely stopped or moving slowly in traffic.",
+    "objects": [
+      "cars",
+      "traffic lights",
+      "streetlight pole",
+      "utility pole",
+      "lane markings",
+      "high-rise buildings",
+      "trees"
+    ],
+    "context": "Urban roadway with queued traffic and surrounding dense development.",
+    "observations": [
+      "Multiple cars ahead in the same direction",
+      "Traffic lights visible in the distance",
+      "Lane arrows and lane markings on the road",
+      "Tall buildings line the background",
+      "Trees planted along the street",
+      "Camera viewpoint appears from inside a vehicle"
+    ],
+    "scene_type": "urban street intersection",
+    "mobility": [
+      "Vehicle traffic present",
+      "Multiple lanes for motor vehicles",
+      "Intersection control by traffic lights",
+      "No visible pedestrians",
+      "No visible bicycle lane"
+    ],
+    "infrastructure": [
+      "Paved multi-lane road",
+      "Signalized intersection",
+      "Overhead utility lines",
+      "Street lighting and poles",
+      "Curbs and urban roadside landscaping"
+    ],
+    "safety_notes": [
+      "Traffic signal compliance is important here",
+      "Vehicles are closely spaced, so rear-end risk may be present",
+      "Intersection crossing requires attention to signal phase"
+    ],
+    "uncertainty": "Exact signal state, vehicle direction, and whether the camera vehicle is stopped or moving are not fully certain from the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

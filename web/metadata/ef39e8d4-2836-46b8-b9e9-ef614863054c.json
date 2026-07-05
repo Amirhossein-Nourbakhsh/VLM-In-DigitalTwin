@@ -1,0 +1,93 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:47:24+00:00",
+  "lat": 43.6304696,
+  "lon": -79.4843252,
+  "acc_m": 12.11299991607666,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.6263923645019531,
+      "bbox": [
+        109.0462875366211,
+        146.86843872070312,
+        186.1451873779297,
+        180.90975952148438
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.6193282604217529,
+      "bbox": [
+        171.36703491210938,
+        99.43095397949219,
+        178.23583984375,
+        115.7261734008789
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/ef39e8d4-2836-46b8-b9e9-ef614863054c.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4843252,
+        43.6304696
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:47:24+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/ef39e8d4-2836-46b8-b9e9-ef614863054c.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban street intersection with a white car stopped or moving slowly near traffic lights, seen from inside another vehicle.",
+    "interpretation": "A multi-lane city road near an intersection in a dense urban area, likely observed from a moving or stationary car.",
+    "objects": [
+      "white car",
+      "traffic lights",
+      "streetlight poles",
+      "buildings",
+      "overhead wires",
+      "roadway",
+      "vehicle interior/dashboard edge"
+    ],
+    "context": "Daytime urban setting with clear weather and high-rise buildings in the background.",
+    "observations": [
+      "clear blue sky",
+      "intersection ahead",
+      "one white car in the foreground",
+      "traffic signals visible",
+      "tall buildings along the road",
+      "image appears taken from inside a vehicle"
+    ],
+    "scene_type": "urban arterial road intersection",
+    "mobility": [
+      "motor vehicle traffic",
+      "signal-controlled intersection",
+      "multi-lane roadway"
+    ],
+    "infrastructure": [
+      "traffic signal poles",
+      "street lighting",
+      "urban high-rise buildings",
+      "overhead utility lines",
+      "paved roadway"
+    ],
+    "safety_notes": [
+      "Traffic signal state is not fully clear from the image.",
+      "Vehicle positions and motion are uncertain."
+    ],
+    "uncertainty": "The exact direction of travel and whether the white car is stopped or moving cannot be confirmed from the image alone. The traffic light phase is also uncertain."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

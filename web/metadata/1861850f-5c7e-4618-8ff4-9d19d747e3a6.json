@@ -1,0 +1,109 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:44:06+00:00",
+  "lat": 43.6349361,
+  "lon": -79.4900228,
+  "acc_m": 9.9350004196167,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.59765625,
+      "bbox": [
+        278.0,
+        299.0,
+        298.0,
+        313.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.5390625,
+      "bbox": [
+        303.0,
+        302.0,
+        318.0,
+        315.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.51171875,
+      "bbox": [
+        424.0,
+        57.0,
+        444.0,
+        110.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/1861850f-5c7e-4618-8ff4-9d19d747e3a6.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4900228,
+        43.6349361
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:44:06+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/1861850f-5c7e-4618-8ff4-9d19d747e3a6.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Residential street intersection with traffic signal equipment, trees, and low-rise homes on a clear day.",
+    "interpretation": "The scene appears to be a quiet neighborhood road with an intersection controlled by overhead traffic lights. The viewpoint is from inside a vehicle stopped or moving slowly near the curb.",
+    "objects": [
+      "traffic lights",
+      "streetlight pole",
+      "vehicle hood",
+      "trees",
+      "houses",
+      "roadway",
+      "curb",
+      "utility poles",
+      "road signage",
+      "orange traffic barrels or cones"
+    ],
+    "context": "Suburban or residential area with mature tree cover and detached houses along a paved street.",
+    "observations": [
+      "Overhead traffic signal assembly visible",
+      "No pedestrians visible",
+      "No moving vehicles clearly visible",
+      "Clear blue sky",
+      "Residential buildings along the street",
+      "Road curves or continues through an intersection",
+      "Vehicle hood visible in foreground"
+    ],
+    "scene_type": "Residential street intersection",
+    "mobility": [
+      "Motor vehicle travel is supported",
+      "Intersection controlled by traffic lights",
+      "Roadway appears open and paved",
+      "No visible bike lane or crosswalk markings are clear"
+    ],
+    "infrastructure": [
+      "Traffic signal infrastructure",
+      "Street lighting",
+      "Paved roadway",
+      "Residential roadside properties",
+      "Possible utility lines or poles"
+    ],
+    "safety_notes": [
+      "Intersection requires attention to traffic signals",
+      "Orange traffic barrels or cones suggest nearby road work or lane control",
+      "Tree shade may create variable visibility on the road"
+    ],
+    "uncertainty": "The exact road layout, traffic direction, and whether the visible orange objects indicate active construction are unclear from the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

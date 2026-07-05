@@ -1,0 +1,107 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:48:02+00:00",
+  "lat": 43.6308168,
+  "lon": -79.4820702,
+  "acc_m": 10.010000228881836,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.7890625,
+      "bbox": [
+        310.0,
+        368.0,
+        382.0,
+        416.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.6484375,
+      "bbox": [
+        26.0,
+        343.0,
+        113.0,
+        409.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.5234375,
+      "bbox": [
+        356.0,
+        186.0,
+        380.0,
+        233.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/bb652ea3-748f-44f8-9736-b399c0362bd4.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4820702,
+        43.6308168
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:48:02+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/bb652ea3-748f-44f8-9736-b399c0362bd4.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban road intersection with multiple vehicles, traffic signals, lane markings, and roadside trees under clear daylight.",
+    "interpretation": "This appears to be a signalized multi-lane street junction in an urban area, viewed from inside a vehicle approaching or waiting at the intersection.",
+    "objects": [
+      "cars",
+      "traffic lights",
+      "streetlight poles",
+      "road markings",
+      "trees",
+      "buildings",
+      "utility poles and wires"
+    ],
+    "context": "The scene is on a paved city roadway with overhead signals and adjacent buildings and vegetation, suggesting a developed urban corridor.",
+    "observations": [
+      "Two traffic lights are visible.",
+      "Several cars are present on the roadway.",
+      "Lane markings divide the road.",
+      "A green-and-white vehicle is near the left side of the road.",
+      "Tall buildings are visible in the distance.",
+      "Trees line both sides of the street.",
+      "The image is rotated sideways."
+    ],
+    "scene_type": "urban intersection",
+    "mobility": [
+      "vehicular traffic is present",
+      "intersection is controlled by traffic signals",
+      "multiple lanes are available for vehicles",
+      "no pedestrians are visible"
+    ],
+    "infrastructure": [
+      "traffic signal poles",
+      "street lighting",
+      "paved multi-lane roadway",
+      "lane divider markings",
+      "overhead utility lines",
+      "adjacent urban buildings"
+    ],
+    "safety_notes": [
+      "Traffic signal compliance is required.",
+      "Vehicles are close to the intersection, so merging and turning movements may need caution.",
+      "No pedestrian crosswalk activity is visible in this frame."
+    ],
+    "uncertainty": "The exact traffic signal phase and vehicle movements are unclear. The image orientation is rotated, so some spatial details may be harder to judge."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

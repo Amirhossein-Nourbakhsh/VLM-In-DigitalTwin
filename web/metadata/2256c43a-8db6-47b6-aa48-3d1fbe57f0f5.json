@@ -1,0 +1,106 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:48:31+00:00",
+  "lat": 43.6317069,
+  "lon": -79.4776792,
+  "acc_m": 9.9350004196167,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.73828125,
+      "bbox": [
+        316.0,
+        345.0,
+        434.0,
+        410.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.59765625,
+      "bbox": [
+        245.0,
+        355.0,
+        274.0,
+        374.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.55078125,
+      "bbox": [
+        252.0,
+        272.0,
+        258.0,
+        283.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/2256c43a-8db6-47b6-aa48-3d1fbe57f0f5.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4776792,
+        43.6317069
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:48:31+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/2256c43a-8db6-47b6-aa48-3d1fbe57f0f5.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban roadway scene with moving vehicles, a multi-story building, trees, and overhead utility lines under clear daylight.",
+    "interpretation": "This appears to be a suburban or urban arterial street view with light traffic and nearby residential or mixed-use development.",
+    "objects": [
+      "cars",
+      "building",
+      "trees",
+      "utility poles",
+      "overhead wires",
+      "streetlight",
+      "roadway"
+    ],
+    "context": "The image shows a paved street bordered by greenery and a tall building, suggesting a developed urban edge or neighborhood street.",
+    "observations": [
+      "Two cars are visible on the road",
+      "A tall building is on the left side",
+      "Trees line both sides of the street",
+      "Overhead wires cross the sky",
+      "The sky is clear and bright",
+      "No pedestrians are visible",
+      "Road markings are faint or not clearly visible"
+    ],
+    "scene_type": "urban street",
+    "mobility": [
+      "Motor vehicles are present",
+      "The roadway appears open to traffic",
+      "No dedicated bike lane is visible",
+      "No pedestrian crossing is clearly visible"
+    ],
+    "infrastructure": [
+      "Paved multi-lane road",
+      "Overhead utility lines",
+      "Streetlight poles",
+      "Adjacent high-rise or mid-rise building",
+      "Vegetated roadside"
+    ],
+    "safety_notes": [
+      "Traffic is present, so vehicle awareness is needed",
+      "Road lane boundaries are not clearly visible",
+      "Glare or bright sunlight may affect visibility"
+    ],
+    "uncertainty": "The image appears rotated, so some object identification and road geometry are less certain. The traffic light detector label is not clearly confirmed by the visible image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

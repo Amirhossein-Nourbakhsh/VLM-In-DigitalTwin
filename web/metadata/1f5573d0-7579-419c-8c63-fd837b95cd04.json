@@ -1,0 +1,103 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:23:54+00:00",
+  "lat": 43.6245399,
+  "lon": -79.4775652,
+  "acc_m": 12.305000305175781,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.64453125,
+      "bbox": [
+        341.0,
+        318.0,
+        477.0,
+        397.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.5625,
+      "bbox": [
+        329.0,
+        335.0,
+        342.0,
+        357.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.5390625,
+      "bbox": [
+        331.0,
+        170.0,
+        346.0,
+        188.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/1f5573d0-7579-419c-8c63-fd837b95cd04.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4775652,
+        43.6245399
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:23:54+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/1f5573d0-7579-419c-8c63-fd837b95cd04.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban roadway scene with multiple cars queued ahead, viewed from inside a vehicle on a tree-lined street.",
+    "interpretation": "This appears to be a city street segment with slow or stopped traffic, likely approaching an intersection or controlled roadway area.",
+    "objects": [
+      "cars",
+      "streetlights",
+      "trees",
+      "buildings",
+      "roadway",
+      "vehicle dashboard/windshield edge"
+    ],
+    "context": "The image shows an urban corridor with traffic moving or waiting in multiple lanes, bordered by trees and mid-rise buildings.",
+    "observations": [
+      "Multiple vehicles are ahead in the lane",
+      "A white car is visible on the right side",
+      "Tree canopy lines the street",
+      "Mid-rise buildings are visible in the background",
+      "The image is taken from inside a vehicle",
+      "Streetlights are present along the road"
+    ],
+    "scene_type": "Urban street / traffic queue",
+    "mobility": [
+      "Vehicle traffic is present",
+      "Traffic appears slow or stopped",
+      "No pedestrians are clearly visible",
+      "Lane markings are not clearly visible"
+    ],
+    "infrastructure": [
+      "Multi-lane paved roadway",
+      "Street lighting",
+      "Roadside trees",
+      "Urban buildings adjacent to the street"
+    ],
+    "safety_notes": [
+      "Traffic congestion may require cautious driving",
+      "Road conditions ahead are partially obscured by vehicles",
+      "Possible limited visibility due to windshield reflections"
+    ],
+    "uncertainty": "The exact intersection control, signal state, and road direction are unclear. The traffic light label is not clearly verifiable from the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

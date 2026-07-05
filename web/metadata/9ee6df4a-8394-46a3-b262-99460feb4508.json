@@ -1,0 +1,105 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:44:38+00:00",
+  "lat": 43.6348853,
+  "lon": -79.4875581,
+  "acc_m": 10.02400016784668,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.55078125,
+      "bbox": [
+        426.0,
+        308.0,
+        470.0,
+        338.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.5390625,
+      "bbox": [
+        447.0,
+        304.0,
+        480.0,
+        336.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.51171875,
+      "bbox": [
+        4.0,
+        238.0,
+        17.0,
+        270.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/9ee6df4a-8394-46a3-b262-99460feb4508.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4875581,
+        43.6348853
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:44:38+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/9ee6df4a-8394-46a3-b262-99460feb4508.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Daytime view from inside a car on a quiet, tree-lined residential street.",
+    "interpretation": "The scene appears to be a low-traffic neighborhood roadway with parked vehicles, utility poles, and overhead lines along a wide paved street.",
+    "objects": [
+      "car interior/dashboard",
+      "parked car",
+      "utility poles",
+      "overhead power lines",
+      "trees",
+      "houses",
+      "street"
+    ],
+    "context": "Residential or suburban street in daylight with clear weather and good visibility.",
+    "observations": [
+      "Taken from inside a moving or stopped vehicle",
+      "Wide paved roadway",
+      "Parked cars along the street",
+      "Tall trees line both sides",
+      "Utility poles and overhead wires visible",
+      "Clear blue sky",
+      "No pedestrians clearly visible"
+    ],
+    "scene_type": "residential street",
+    "mobility": [
+      "Vehicle travel is possible on the paved road",
+      "Street appears suitable for two-way local traffic",
+      "On-street parking is present"
+    ],
+    "infrastructure": [
+      "Paved roadway",
+      "Utility poles",
+      "Overhead power lines",
+      "Residential frontage",
+      "Street lighting or roadside poles visible"
+    ],
+    "safety_notes": [
+      "No immediate hazards are clearly visible",
+      "Potential attention needed for parked vehicles and residential roadside access",
+      "Pedestrian presence is not clearly visible"
+    ],
+    "uncertainty": "Image is slightly rotated, and some details such as exact road markings, traffic controls, and vehicle motion are unclear."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

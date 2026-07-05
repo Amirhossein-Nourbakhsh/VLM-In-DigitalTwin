@@ -1,0 +1,756 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Vision-Language Models for Urban Digital Twins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-soft: rgba(15, 23, 42, 0.72);
+      --border: rgba(255,255,255,0.12);
+      --text: #eef2ff;
+      --muted: #cbd5e1;
+      --accent: #60a5fa;
+      --accent2: #34d399;
+      --danger: #fb7185;
+      --shadow: 0 12px 40px rgba(0,0,0,0.28);
+    }
+
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #020617;
+    }
+
+    #map {
+      position: absolute;
+      inset: 0;
+    }
+
+    .app-shell {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .topbar {
+      pointer-events: auto;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .title-panel {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      max-width: 640px;
+    }
+
+    .title-panel h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .title-panel p {
+      margin: 6px 0 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .stats-panel {
+      pointer-events: auto;
+      position: absolute;
+      top: 150px;
+      left: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(160px, 1fr));
+      gap: 12px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .side-panel {
+      pointer-events: auto;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 280px;
+      max-width: calc(100vw - 32px);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      z-index: 12;
+    }
+
+    .side-panel h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      flex: 0 0 12px;
+    }
+
+    .dot.red { background: #ef4444; }
+    .dot.orange { background: #f97316; }
+    .dot.green { background: #10b981; }
+    .dot.blue { background: #3b82f6; }
+
+    .filter-wrap {
+      margin-top: 14px;
+    }
+
+    .filter-wrap label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .filter-wrap input {
+      width: 100%;
+    }
+
+    .filter-value {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    .detail-panel {
+      pointer-events: auto;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 780px;
+      height: calc(100vh - 32px);
+      max-width: calc(100vw - 32px);
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      overflow: hidden;
+      z-index: 30;
+      display: none;
+    }
+
+    .detail-panel.open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .detail-header h3 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .detail-close {
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .detail-content {
+      overflow-y: auto;
+      padding: 0;
+      flex: 1;
+      background: #fff;
+    }
+
+    .detail-empty {
+      padding: 24px 18px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .detail-card {
+      display: grid;
+      gap: 0;
+    }
+
+    .detail-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .detail-body {
+      padding: 16px 18px 22px;
+    }
+
+    .detail-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .detail-meta {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .detail-section {
+      margin-top: 14px;
+    }
+
+    .detail-section-title {
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #0f172a;
+      font-size: 13px;
+    }
+
+    .detail-text {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .detail-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334155;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1100px) {
+      .detail-panel {
+        top: auto;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        height: 58vh;
+      }
+
+      .side-panel {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .stats-panel {
+        top: 120px;
+        width: calc(100vw - 32px);
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <div class="app-shell">
+    <div class="topbar">
+      <div class="title-panel">
+        <h1>Vision-Language Models for Urban Digital Twins</h1>
+        <p>
+          A geospatial visual analytics interface for urban scene understanding,
+          image-based object detection, and geo-referenced observation mapping.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats-panel">
+      <div class="stat-card">
+        <div class="stat-label">Images Collected</div>
+        <div class="stat-value" id="stat-images">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Detections</div>
+        <div class="stat-value" id="stat-detections">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Unique Labels</div>
+        <div class="stat-value" id="stat-labels">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Geotagged Images</div>
+        <div class="stat-value" id="stat-geotagged">0</div>
+      </div>
+    </div>
+
+    <div class="side-panel">
+      <h3>Map Legend & Controls</h3>
+      <div class="legend-row"><span class="dot red"></span> Single geo-referenced image</div>
+      <div class="legend-row"><span class="dot orange"></span> Clustered observations</div>
+      <div class="legend-row"><span class="dot green"></span> 3D terrain / urban context</div>
+      <div class="legend-row"><span class="dot blue"></span> Image-driven urban detections</div>
+
+      <div class="filter-wrap">
+        <label for="confidenceSlider">Minimum detection confidence</label>
+        <input id="confidenceSlider" type="range" min="0" max="1" step="0.05" value="0.5" />
+        <div class="filter-value" id="confidenceValue">0.50</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="detailPanel" class="detail-panel">
+    <div class="detail-header">
+      <h3>Image Interpretation</h3>
+      <button id="detailClose" class="detail-close" type="button">Close</button>
+    </div>
+    <div id="detailContent" class="detail-content">
+      <div class="detail-empty">
+        Click an image point on the map to view the image, detections, and VLM interpretation.
+      </div>
+    </div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+  <script>
+    const MAPBOX_TOKEN = "";
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/standard',
+      center: [-79.3832, 43.6532],
+      zoom: 12,
+      pitch: 55,
+      bearing: -20,
+      antialias: true
+    });
+
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+    const emptyFC = { type: "FeatureCollection", features: [] };
+    let allFeatures = [];
+
+    const statImages = document.getElementById('stat-images');
+    const statDetections = document.getElementById('stat-detections');
+    const statLabels = document.getElementById('stat-labels');
+    const statGeotagged = document.getElementById('stat-geotagged');
+    const confidenceSlider = document.getElementById('confidenceSlider');
+    const confidenceValue = document.getElementById('confidenceValue');
+
+    const detailPanel = document.getElementById('detailPanel');
+    const detailContent = document.getElementById('detailContent');
+    const detailClose = document.getElementById('detailClose');
+
+    detailClose.addEventListener('click', () => {
+      detailPanel.classList.remove('open');
+    });
+
+    function parseArraySafe(v) {
+      if (Array.isArray(v)) return v;
+      if (typeof v === 'string') {
+        try { return JSON.parse(v); } catch { return []; }
+      }
+      return [];
+    }
+
+    function renderDetailPanel(properties) {
+      const p = properties || {};
+
+      const labels = parseArraySafe(p.labels);
+      const objects = parseArraySafe(p.vlm_objects);
+      const observations = parseArraySafe(p.vlm_observations);
+      const mobility = parseArraySafe(p.vlm_mobility);
+      const infrastructure = parseArraySafe(p.vlm_infrastructure);
+      const safetyNotes = parseArraySafe(p.vlm_safety_notes);
+
+      const labelsHtml = labels.length
+        ? labels.map(x => `<span class="chip">${x}</span>`).join('')
+        : '<span class="chip">None</span>';
+
+      const objectsHtml = objects.length
+        ? objects.map(x => `<span class="chip">${x}</span>`).join('')
+        : '<span class="chip">None</span>';
+
+      const observationsHtml = observations.length
+        ? observations.map(x => `<li>${x}</li>`).join('')
+        : '<li>None</li>';
+
+      const mobilityHtml = mobility.length
+        ? mobility.map(x => `<li>${x}</li>`).join('')
+        : '<li>None</li>';
+
+      const infrastructureHtml = infrastructure.length
+        ? infrastructure.map(x => `<li>${x}</li>`).join('')
+        : '<li>None</li>';
+
+      const safetyHtml = safetyNotes.length
+        ? safetyNotes.map(x => `<li>${x}</li>`).join('')
+        : '<li>None</li>';
+
+      const lat = p.lat != null ? Number(p.lat).toFixed(6) : 'N/A';
+      const lon = p.lon != null ? Number(p.lon).toFixed(6) : 'N/A';
+
+      detailContent.innerHTML = `
+        <div class="detail-card">
+          ${p.image_url ? `<img src="${p.image_url}" alt="frame image">` : ''}
+          <div class="detail-body">
+            <div class="detail-title">Urban Observation</div>
+
+            <div class="detail-meta">
+              <strong>Timestamp:</strong> ${p.ts || 'N/A'}<br/>
+              <strong>Device:</strong> ${p.device_id || 'N/A'}<br/>
+              <strong>Coordinates:</strong> ${lat}, ${lon}<br/>
+              <strong>Detections:</strong> ${p.detection_count || 0}<br/>
+              <strong>Scene Type:</strong> ${p.vlm_scene_type || 'N/A'}<br/>
+             
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Detector Labels</div>
+              <div class="chips">${labelsHtml}</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">VLM Summary</div>
+              <div class="detail-text">${p.vlm_summary || 'N/A'}</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Interpretation</div>
+              <div class="detail-text">${p.vlm_interpretation || 'N/A'}</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Context</div>
+              <div class="detail-text">${p.vlm_context || 'N/A'}</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Visible Objects</div>
+              <div class="chips">${objectsHtml}</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Observations</div>
+              <ul class="detail-list">${observationsHtml}</ul>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Mobility</div>
+              <ul class="detail-list">${mobilityHtml}</ul>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Infrastructure</div>
+              <ul class="detail-list">${infrastructureHtml}</ul>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Safety Notes</div>
+              <ul class="detail-list">${safetyHtml}</ul>
+            </div>
+
+            <div class="detail-section">
+              <div class="detail-section-title">Uncertainty</div>
+              <div class="detail-text" style="color:#64748b;">${p.vlm_uncertainty || 'N/A'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      detailPanel.classList.add('open');
+    }
+
+    map.on('load', async () => {
+      map.addSource('mapbox-dem', {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        tileSize: 512,
+        maxzoom: 14
+      });
+      map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.2 });
+
+      map.addLayer({
+        id: 'sky',
+        type: 'sky',
+        paint: {
+          'sky-type': 'atmosphere',
+          'sky-atmosphere-sun': [0, 0],
+          'sky-atmosphere-sun-intensity': 10
+        }
+      });
+
+      map.addSource('events', {
+        type: 'geojson',
+        data: emptyFC,
+        cluster: true,
+        clusterRadius: 40,
+        clusterMaxZoom: 14
+      });
+
+      map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'events',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': ['step', ['get', 'point_count'], '#fed7aa', 10, '#fb923c', 50, '#ea580c'],
+          'circle-radius': ['step', ['get', 'point_count'], 14, 10, 20, 50, 26],
+          'circle-stroke-color': '#fff',
+          'circle-stroke-width': 1.5
+        }
+      });
+
+      map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'events',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': ['get', 'point_count_abbreviated'],
+          'text-size': 12
+        }
+      });
+
+      map.addLayer({
+        id: 'event-points',
+        type: 'circle',
+        source: 'events',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-radius': 7,
+          'circle-color': '#ef4444',
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-width': 1.5
+        }
+      });
+
+      map.on('click', 'event-points', (e) => {
+        const f = e.features[0];
+        const p = f.properties || {};
+        renderDetailPanel(p);
+      });
+
+      map.on('click', 'clusters', (e) => {
+        const feat = map.queryRenderedFeatures(e.point, { layers: ['clusters'] })[0];
+        const id = feat.properties.cluster_id;
+        map.getSource('events').getClusterExpansionZoom(id, (err, zoom) => {
+          if (err) return;
+          map.easeTo({ center: feat.geometry.coordinates, zoom });
+        });
+      });
+
+      ['clusters', 'event-points'].forEach(id => {
+        map.on('mouseenter', id, () => map.getCanvas().style.cursor = 'pointer');
+        map.on('mouseleave', id, () => map.getCanvas().style.cursor = '');
+      });
+
+      confidenceSlider.addEventListener('input', () => {
+        confidenceValue.textContent = Number(confidenceSlider.value).toFixed(2);
+        applyConfidenceFilter(Number(confidenceSlider.value));
+      });
+
+      await loadSidecarManifest();
+    });
+
+    async function loadSidecarManifest() {
+      try {
+        const manifest = await fetch('./manifest.json').then(r => r.json());
+
+        const rawItems = await Promise.all(
+          manifest.map(async item => {
+            const meta = await fetch(item.json_url).then(r => r.json());
+            return transformMetadataToFeature(meta, item.image_url);
+          })
+        );
+
+        allFeatures = rawItems.filter(Boolean);
+        updateStats(allFeatures);
+        setEventSource(allFeatures);
+        fitToFeatures(allFeatures);
+      } catch (err) {
+        console.error('Failed to load sidecar manifest:', err);
+      }
+    }
+
+    function transformMetadataToFeature(meta, imageUrl) {
+      if (!meta || typeof meta.lat !== 'number' || typeof meta.lon !== 'number') return null;
+
+      const detections = Array.isArray(meta.detections) ? meta.detections : [];
+      const labels = [...new Set(detections.map(d => d.label).filter(Boolean))];
+      const maxConfidence = detections.length
+        ? Math.max(...detections.map(d => Number(d.confidence || 0)))
+        : 0;
+
+      const vlm = meta.vlm || {};
+
+      return {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [meta.lon, meta.lat]
+        },
+        properties: {
+          device_id: meta.device_id || null,
+          ts: meta.ts || null,
+          lat: meta.lat,
+          lon: meta.lon,
+          acc_m: meta.acc_m || null,
+          image_url: imageUrl,
+          image_key: meta.image_key || null,
+          labels: labels,
+          detection_count: detections.length,
+          max_confidence: maxConfidence,
+          vlm_summary: vlm.summary || "",
+          vlm_interpretation: vlm.interpretation || "",
+          vlm_context: vlm.context || "",
+          vlm_scene_type: vlm.scene_type || "",
+          vlm_uncertainty: vlm.uncertainty || "",
+          vlm_objects: Array.isArray(vlm.objects) ? vlm.objects : [],
+          vlm_observations: Array.isArray(vlm.observations) ? vlm.observations : [],
+          vlm_mobility: Array.isArray(vlm.mobility) ? vlm.mobility : [],
+          vlm_infrastructure: Array.isArray(vlm.infrastructure) ? vlm.infrastructure : [],
+          vlm_safety_notes: Array.isArray(vlm.safety_notes) ? vlm.safety_notes : [],
+          vlm_model: meta.vlm_model || ""
+        }
+      };
+    }
+
+    function updateStats(features) {
+      const totalImages = features.length;
+      const totalDetections = features.reduce((sum, f) => sum + (f.properties.detection_count || 0), 0);
+      const uniqueLabels = new Set(
+        features.flatMap(f => Array.isArray(f.properties.labels) ? f.properties.labels : [])
+      );
+      const geotagged = features.filter(f => f.geometry?.coordinates?.length === 2).length;
+
+      statImages.textContent = totalImages.toLocaleString();
+      statDetections.textContent = totalDetections.toLocaleString();
+      statLabels.textContent = uniqueLabels.size.toLocaleString();
+      statGeotagged.textContent = geotagged.toLocaleString();
+    }
+
+    function setEventSource(features) {
+      const fc = {
+        type: 'FeatureCollection',
+        features: features.map(f => ({
+          ...f,
+          properties: {
+            ...f.properties,
+            labels: JSON.stringify(f.properties.labels || []),
+            vlm_objects: JSON.stringify(f.properties.vlm_objects || []),
+            vlm_observations: JSON.stringify(f.properties.vlm_observations || []),
+            vlm_mobility: JSON.stringify(f.properties.vlm_mobility || []),
+            vlm_infrastructure: JSON.stringify(f.properties.vlm_infrastructure || []),
+            vlm_safety_notes: JSON.stringify(f.properties.vlm_safety_notes || [])
+          }
+        }))
+      };
+
+      map.getSource('events').setData(fc);
+    }
+
+    function applyConfidenceFilter(minConfidence) {
+      const filtered = allFeatures.filter(f => (f.properties.max_confidence || 0) >= minConfidence);
+      updateStats(filtered);
+      setEventSource(filtered);
+      if (filtered.length) fitToFeatures(filtered);
+    }
+
+    function fitToFeatures(features) {
+      if (!features.length) return;
+      const first = features[0].geometry.coordinates;
+      const bounds = features.reduce(
+        (b, f) => b.extend(f.geometry.coordinates),
+        new mapboxgl.LngLatBounds(first, first)
+      );
+      map.fitBounds(bounds, { padding: 80, duration: 1000 });
+    }
+  </script>
+</body>
+</html>

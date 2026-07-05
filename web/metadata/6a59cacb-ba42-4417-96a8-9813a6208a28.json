@@ -1,0 +1,104 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:43:24+00:00",
+  "lat": 43.6366772,
+  "lon": -79.490823,
+  "acc_m": 9.9350004196167,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.57421875,
+      "bbox": [
+        403.0,
+        347.0,
+        471.0,
+        381.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.55078125,
+      "bbox": [
+        390.0,
+        346.0,
+        448.0,
+        382.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.5390625,
+      "bbox": [
+        73.0,
+        196.0,
+        108.0,
+        223.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/6a59cacb-ba42-4417-96a8-9813a6208a28.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.490823,
+        43.6366772
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:43:24+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/6a59cacb-ba42-4417-96a8-9813a6208a28.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban street scene with a tree-lined roadway, a parked car, and a traffic signal near an intersection.",
+    "interpretation": "Likely a quiet residential or mixed-use street viewed from inside a vehicle, with roadside parking and signalized crossing control.",
+    "objects": [
+      "parked car",
+      "traffic light",
+      "large tree",
+      "utility pole",
+      "buildings",
+      "roadway"
+    ],
+    "context": "Daytime street view in an urban area, with strong sunlight and shadows cast across the pavement.",
+    "observations": [
+      "car parked along the curb",
+      "traffic light visible on pole",
+      "large tree dominates left side",
+      "buildings in the background",
+      "road surface visible with lane markings",
+      "view appears from inside a vehicle"
+    ],
+    "scene_type": "urban street",
+    "mobility": [
+      "vehicle traffic possible",
+      "street parking present",
+      "signalized intersection likely nearby",
+      "pedestrian movement possible"
+    ],
+    "infrastructure": [
+      "paved roadway",
+      "curbside parking",
+      "traffic signal",
+      "utility pole",
+      "adjacent building frontage"
+    ],
+    "safety_notes": [
+      "traffic signal indicates controlled crossing or intersection",
+      "parked vehicle may reduce visibility",
+      "tree and pole may partially obstruct sightlines"
+    ],
+    "uncertainty": "Image orientation is somewhat unclear, so precise roadway direction and intersection layout are uncertain. The parked car and traffic light are visible but exact positions relative to the intersection are not fully certain."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

@@ -1,0 +1,106 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:46:59+00:00",
+  "lat": 43.6305749,
+  "lon": -79.4843935,
+  "acc_m": 11.663999557495117,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.609375,
+      "bbox": [
+        93.0,
+        299.0,
+        339.0,
+        442.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.5859375,
+      "bbox": [
+        454.0,
+        331.0,
+        473.0,
+        352.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.5625,
+      "bbox": [
+        150.0,
+        269.0,
+        162.0,
+        293.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/21f6d6dd-88b1-45fc-bd11-ee5d2c07c3db.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4843935,
+        43.6305749
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:46:59+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/21f6d6dd-88b1-45fc-bd11-ee5d2c07c3db.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "A city street intersection is viewed from inside a vehicle behind a blue hatchback, with tall buildings in the background and traffic lights ahead.",
+    "interpretation": "Urban roadway scene at an intersection or signalized crossing, likely in a dense downtown area, with vehicles stopped or moving slowly in traffic.",
+    "objects": [
+      "blue hatchback car ahead",
+      "traffic lights",
+      "other vehicles in the distance",
+      "tall buildings",
+      "trees",
+      "roadway",
+      "crosswalk markings"
+    ],
+    "context": "Daytime urban street environment near a downtown skyline, seen from a driver or passenger perspective at street level.",
+    "observations": [
+      "Image is rotated sideways",
+      "Blue car directly ahead",
+      "Traffic lights visible over the road",
+      "Multiple high-rise buildings in view",
+      "Lane and crosswalk markings are visible",
+      "Clear daylight and blue sky"
+    ],
+    "scene_type": "Urban road intersection",
+    "mobility": [
+      "Motor vehicle traffic present",
+      "Intersection controlled by traffic signals",
+      "Lane-based road movement",
+      "Pedestrian crossing area indicated by markings"
+    ],
+    "infrastructure": [
+      "Signalized intersection",
+      "Marked travel lanes",
+      "Crosswalk",
+      "Urban high-rise surroundings",
+      "Street lighting poles"
+    ],
+    "safety_notes": [
+      "Vehicle ahead is close to the camera vehicle",
+      "Traffic signal compliance is important at the intersection",
+      "Possible pedestrian crossing area nearby",
+      "Limited visibility due to the camera angle and rotated image"
+    ],
+    "uncertainty": "Exact road location, signal phase, and whether the vehicles are fully stopped or moving are unclear from the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

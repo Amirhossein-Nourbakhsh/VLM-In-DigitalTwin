@@ -1,0 +1,105 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:22:05+00:00",
+  "lat": 43.6236145,
+  "lon": -79.4787056,
+  "acc_m": 18.297000885009766,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "person",
+      "confidence": 0.66796875,
+      "bbox": [
+        249.0,
+        322.0,
+        264.0,
+        376.0
+      ]
+    },
+    {
+      "label": "person",
+      "confidence": 0.5390625,
+      "bbox": [
+        236.0,
+        324.0,
+        255.0,
+        371.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.51171875,
+      "bbox": [
+        349.0,
+        238.0,
+        378.0,
+        265.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/c43647c2-f77d-45a3-8637-948e211fcb93.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4787056,
+        43.6236145
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:22:05+00:00",
+      "labels": [
+        "traffic light",
+        "person"
+      ],
+      "image_key": "frames/dev-00000000/20250901/c43647c2-f77d-45a3-8637-948e211fcb93.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "A street intersection with a pedestrian crossing and stop sign, viewed from inside a vehicle.",
+    "interpretation": "This appears to be a calm urban or suburban roadway intersection with pedestrian access and standard traffic control.",
+    "objects": [
+      "stop sign",
+      "pedestrian crossing",
+      "person",
+      "trees",
+      "parked car",
+      "road markings",
+      "vehicle interior/windshield edge"
+    ],
+    "context": "Daytime street scene at an intersection, likely in a low- to moderate-traffic residential or local road area.",
+    "observations": [
+      "Two people are visible near the crosswalk",
+      "A stop sign is present on the far side of the intersection",
+      "Crosswalk markings are visible on the road",
+      "Trees line the street",
+      "A parked vehicle is visible near the curb",
+      "The image is taken from inside a vehicle"
+    ],
+    "scene_type": "urban street intersection",
+    "mobility": [
+      "Pedestrian crossing present",
+      "Vehicle traffic controlled by stop sign",
+      "Road appears usable for cars",
+      "No active moving vehicles are clearly visible"
+    ],
+    "infrastructure": [
+      "Intersection",
+      "Stop sign",
+      "Marked crosswalk",
+      "Curbed roadway",
+      "Streetlight or utility pole present"
+    ],
+    "safety_notes": [
+      "Pedestrians are near the crossing area",
+      "Driver should yield at the stop-controlled intersection",
+      "Visibility of the intersection appears partially affected by the vehicle interior framing"
+    ],
+    "uncertainty": "The exact number of people and the presence of any traffic light are unclear; no active traffic signal is clearly visible in the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

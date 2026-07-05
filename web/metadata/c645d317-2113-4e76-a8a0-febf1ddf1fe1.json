@@ -1,0 +1,83 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:39:50+00:00",
+  "lat": 43.6326309,
+  "lon": -79.4879656,
+  "acc_m": 5.318999767303467,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "stop sign",
+      "confidence": 0.5390625,
+      "bbox": [
+        385.0,
+        228.0,
+        438.0,
+        274.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/c645d317-2113-4e76-a8a0-febf1ddf1fe1.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4879656,
+        43.6326309
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:39:50+00:00",
+      "labels": [
+        "stop sign"
+      ],
+      "image_key": "frames/dev-00000000/20250901/c645d317-2113-4e76-a8a0-febf1ddf1fe1.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Residential street corner viewed from inside a vehicle, with a visible stop sign and tree-lined roadway.",
+    "interpretation": "The scene appears to be a quiet neighborhood intersection with low traffic and local residential buildings nearby.",
+    "objects": [
+      "stop sign",
+      "trees",
+      "utility pole",
+      "overhead wires",
+      "residential house",
+      "parked/visible vehicle interior edge"
+    ],
+    "context": "Urban or suburban residential street intersection with mature trees and houses adjacent to the road.",
+    "observations": [
+      "Stop sign is visible near the corner",
+      "Street appears dry",
+      "No pedestrians visible",
+      "No moving vehicles visible",
+      "House is set back behind trees",
+      "Overhead utility lines cross the scene"
+    ],
+    "scene_type": "Residential intersection",
+    "mobility": [
+      "Vehicle travel is possible",
+      "Intersection control is present via stop sign",
+      "No dedicated bike lane is visible",
+      "Sidewalk presence is uncertain"
+    ],
+    "infrastructure": [
+      "Paved roadway",
+      "Stop-controlled intersection",
+      "Utility poles",
+      "Overhead power lines",
+      "Residential frontage"
+    ],
+    "safety_notes": [
+      "Drivers should obey the stop sign",
+      "Trees may partially obstruct views at the intersection",
+      "Potential turning conflict at the corner"
+    ],
+    "uncertainty": "The image is rotated and partly obscured by the vehicle interior, so some infrastructure details such as sidewalks and lane markings are unclear."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

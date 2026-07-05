@@ -1,0 +1,107 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:45:41+00:00",
+  "lat": 43.6310255,
+  "lon": -79.4845994,
+  "acc_m": 9.9350004196167,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "person",
+      "confidence": 0.765625,
+      "bbox": [
+        97.0,
+        313.0,
+        124.0,
+        383.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.59765625,
+      "bbox": [
+        355.0,
+        240.0,
+        362.0,
+        257.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.59765625,
+      "bbox": [
+        341.0,
+        312.0,
+        391.0,
+        338.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/fe40ba00-4631-4d42-93ab-6a507c702363.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4845994,
+        43.6310255
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:45:41+00:00",
+      "labels": [
+        "car",
+        "traffic light",
+        "person"
+      ],
+      "image_key": "frames/dev-00000000/20250901/fe40ba00-4631-4d42-93ab-6a507c702363.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban street scene at an intersection with lanes, crosswalk markings, traffic lights, a few vehicles, and pedestrians in the distance.",
+    "interpretation": "A city roadway near a junction in a built-up district, likely a mixed pedestrian-vehicle environment with controlled crossings.",
+    "objects": [
+      "car",
+      "person",
+      "traffic light",
+      "roadway",
+      "crosswalk markings",
+      "utility poles",
+      "buildings"
+    ],
+    "context": "Daytime urban streetscape with high-rise buildings and active road infrastructure.",
+    "observations": [
+      "Multi-lane road visible",
+      "Marked pedestrian crossing present",
+      "Traffic lights installed at intersection",
+      "One pedestrian near the roadway",
+      "Several cars visible in the distance",
+      "Tall buildings line the background",
+      "Clear sky and strong daylight"
+    ],
+    "scene_type": "urban intersection",
+    "mobility": [
+      "Vehicular traffic on paved roadway",
+      "Pedestrian crossing opportunity at marked crosswalk",
+      "Signal-controlled intersection"
+    ],
+    "infrastructure": [
+      "Asphalt road surface",
+      "Lane markings",
+      "Crosswalk striping",
+      "Traffic signal hardware",
+      "Street lighting poles",
+      "Sidewalk/road edge areas"
+    ],
+    "safety_notes": [
+      "Pedestrian is close to active traffic lanes",
+      "Crossing should follow signal control",
+      "Driver visibility appears generally good in daylight"
+    ],
+    "uncertainty": "The exact location, traffic signal state, and whether the pedestrian is actively crossing are unclear from the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

@@ -1,0 +1,111 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:47:46+00:00",
+  "lat": 43.6306359,
+  "lon": -79.4829091,
+  "acc_m": 11.090999603271484,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.71875,
+      "bbox": [
+        329.0,
+        365.0,
+        395.0,
+        416.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.7109375,
+      "bbox": [
+        190.0,
+        344.0,
+        337.0,
+        461.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.62109375,
+      "bbox": [
+        95.0,
+        258.0,
+        103.0,
+        298.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/ba6f3cb7-0839-4b92-9d3f-a318aa4eec5c.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4829091,
+        43.6306359
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:47:46+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/ba6f3cb7-0839-4b92-9d3f-a318aa4eec5c.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Daytime street view from inside a car on a multi-lane urban road behind other vehicles, approaching an intersection with traffic signals.",
+    "interpretation": "The scene appears to show normal vehicular traffic on an arterial street in a city setting, with signal-controlled intersections and overhead utility lines.",
+    "objects": [
+      "white SUV directly ahead",
+      "gray SUV ahead in right lane",
+      "partial dark vehicle at right edge",
+      "traffic lights in the distance",
+      "streetlight pole",
+      "utility poles and overhead wires",
+      "trees and roadside vegetation",
+      "distant mid-rise building"
+    ],
+    "context": "Urban roadway under clear daylight conditions, viewed from a moving or stopped vehicle in traffic.",
+    "observations": [
+      "clear blue sky",
+      "multiple lanes in each direction",
+      "lane markings visible",
+      "traffic signals ahead",
+      "vehicles aligned in traffic",
+      "overhead power lines cross the scene",
+      "sidewalk/roadside trees visible",
+      "dashboard edge visible at bottom"
+    ],
+    "scene_type": "urban arterial road with signalized intersection",
+    "mobility": [
+      "car traffic present",
+      "vehicles traveling in same direction",
+      "intersection controlled by traffic lights",
+      "no pedestrians visible",
+      "no bicycle or transit vehicles clearly visible"
+    ],
+    "infrastructure": [
+      "paved multi-lane street",
+      "signalized intersection",
+      "street lighting",
+      "utility poles",
+      "overhead power lines",
+      "road markings"
+    ],
+    "safety_notes": [
+      "traffic is present and spacing should be maintained",
+      "approaching an intersection requires attention to signal changes",
+      "limited forward visibility due to the vehicle ahead",
+      "no obvious immediate hazards visible"
+    ],
+    "uncertainty": "Exact location, travel direction, and signal phase are not certain. Some distant objects and vehicle details are partially obscured."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

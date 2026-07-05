@@ -1,0 +1,106 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:47:44+00:00",
+  "lat": 43.6306297,
+  "lon": -79.4829337,
+  "acc_m": 10.947999954223633,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "car",
+      "confidence": 0.71875,
+      "bbox": [
+        328.0,
+        354.0,
+        389.0,
+        404.0
+      ]
+    },
+    {
+      "label": "car",
+      "confidence": 0.66796875,
+      "bbox": [
+        190.0,
+        331.0,
+        335.0,
+        456.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.5859375,
+      "bbox": [
+        98.0,
+        255.0,
+        105.0,
+        292.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/97f920dd-75eb-48c4-9997-effb14410ffe.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4829337,
+        43.6306297
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:47:44+00:00",
+      "labels": [
+        "car",
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/97f920dd-75eb-48c4-9997-effb14410ffe.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Daytime urban roadway with multiple cars traveling on a multi-lane street under clear skies.",
+    "interpretation": "The image shows a typical city arterial street scene with moving traffic, lane markings, utility poles, and traffic signals ahead.",
+    "objects": [
+      "cars",
+      "traffic lights",
+      "streetlight poles",
+      "utility poles",
+      "overhead wires",
+      "trees",
+      "buildings"
+    ],
+    "context": "Urban road environment viewed from a vehicle on a multi-lane street during clear daytime conditions.",
+    "observations": [
+      "Multiple cars are present in the lane ahead",
+      "Lane markings are visible",
+      "Traffic lights are visible in the distance",
+      "Overhead utility wires cross the scene",
+      "Trees line parts of the roadway",
+      "Buildings are visible in the background",
+      "The sky is clear"
+    ],
+    "scene_type": "Urban arterial road",
+    "mobility": [
+      "vehicle traffic is present",
+      "multi-lane driving environment",
+      "roadway appears suitable for motor vehicles",
+      "traffic signals regulate movement ahead"
+    ],
+    "infrastructure": [
+      "paved roadway",
+      "lane markings",
+      "traffic signals",
+      "streetlights",
+      "utility poles and overhead lines"
+    ],
+    "safety_notes": [
+      "Traffic ahead may require stopping or slowing at signals",
+      "Maintain lane position due to multiple nearby vehicles",
+      "Watch for changing traffic light states"
+    ],
+    "uncertainty": "The exact road name, signal phase, and vehicle movement speeds are not visible with certainty."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}

@@ -1,0 +1,93 @@
+{
+  "device_id": "dev-00000000",
+  "ts": "2025-09-01T21:21:51+00:00",
+  "lat": 43.6238456,
+  "lon": -79.4793486,
+  "acc_m": 9.772000312805176,
+  "frame_w": 640,
+  "frame_h": 480,
+  "detections": [
+    {
+      "label": "traffic light",
+      "confidence": 0.5625,
+      "bbox": [
+        75.0,
+        338.0,
+        97.0,
+        361.0
+      ]
+    },
+    {
+      "label": "traffic light",
+      "confidence": 0.51171875,
+      "bbox": [
+        96.0,
+        336.0,
+        118.0,
+        359.0
+      ]
+    }
+  ],
+  "image_key": "frames/dev-00000000/20250901/43dde9be-2bba-4232-baa1-c7b5d5b7cff9.jpg",
+  "feature": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.4793486,
+        43.6238456
+      ]
+    },
+    "properties": {
+      "device_id": "dev-00000000",
+      "ts": "2025-09-01T21:21:51+00:00",
+      "labels": [
+        "traffic light"
+      ],
+      "image_key": "frames/dev-00000000/20250901/43dde9be-2bba-4232-baa1-c7b5d5b7cff9.jpg"
+    }
+  },
+  "vlm": {
+    "summary": "Urban roadway view from inside a vehicle on a multi-lane street near large buildings and trees.",
+    "interpretation": "The scene appears to be a daytime city street or arterial road with light traffic, viewed through a car windshield.",
+    "objects": [
+      "roadway",
+      "cars",
+      "buildings",
+      "trees",
+      "streetlights",
+      "windshield reflection",
+      "vehicle dashboard"
+    ],
+    "context": "An urban street corridor with adjacent buildings and roadside trees, likely part of a commercial or office district.",
+    "observations": [
+      "View is from inside a vehicle",
+      "Road has multiple lanes",
+      "Several cars are visible ahead and on the side",
+      "Tall building edge is visible on the left",
+      "Trees line the far side of the road",
+      "Streetlights are present",
+      "Sky is clear and bright"
+    ],
+    "scene_type": "urban street",
+    "mobility": [
+      "vehicle traffic is present",
+      "road appears drivable",
+      "no pedestrians are visible",
+      "no cyclists are visible"
+    ],
+    "infrastructure": [
+      "multi-lane asphalt road",
+      "street lighting",
+      "adjacent mid-rise building",
+      "roadside tree line"
+    ],
+    "safety_notes": [
+      "Windshield reflections may reduce visibility",
+      "Traffic ahead requires normal driving caution"
+    ],
+    "uncertainty": "The exact location, road classification, and presence of traffic control devices are unclear; the traffic light detector hint is not clearly visible in the image."
+  },
+  "vlm_model": "gpt-5.4-mini",
+  "vlm_processed": true
+}
